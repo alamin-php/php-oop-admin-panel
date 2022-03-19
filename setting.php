@@ -5,8 +5,14 @@
 } 
 ?>
 <?php 
-    $filepath = realpath(dirname(__FILE__));
-    include_once ($filepath."/classes/User.php");
+    $st = new Settings();
+    $setting = $st->viewSetting();
+?>
+<?php
+error_reporting(0);
+	if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["update"])){
+		$updateSetting = $settings->updateSetting($_POST);
+	}
 ?>
 
 
@@ -37,35 +43,46 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <?php
+              if($setting){
+                while($result = $setting->fetch_assoc()){
+            ?>
+            <form role="form" action="" method="post">
               <div class="box-body">
                 <div class="form-group">
                   <label for="company_name">Name</label>
-                  <input type="text" class="form-control" id="company_name" placeholder="Enter company name">
+                  <input type="text" class="form-control" name="name" value="<?php echo $result['name']; ?>">
                 </div>
                 <div class="form-group">
                   <label for="company_name">Address</label>
-                  <input type="text" class="form-control" id="company_name" placeholder="Enter address">
+                  <input type="text" class="form-control" name="address" value="<?php echo $result['address']; ?>">
                 </div>
                 <div class="form-group">
                   <label for="company_phone">Phone</label>
-                  <input type="text" class="form-control" id="company_phone" placeholder="Enter phone number">
+                  <input type="text" class="form-control" name="phone" value="<?php echo $result['phone']; ?>">
                 </div>
                 <div class="form-group">
                   <label for="company_email">Email address</label>
-                  <input type="text" class="form-control" id="company_email" placeholder="Enter email address">
+                  <input type="text" class="form-control" name="email" value="<?php echo $result['email']; ?>">
                 </div>
                 <div class="form-group">
                   <label for="company_website">Website</label>
-                  <input type="text" class="form-control" id="company_website" placeholder="Enter website">
+                  <input type="text" class="form-control" name="website" value="<?php echo $result['website']; ?>">
                 </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-sm btn-primary btn-flat"><i class="fa fa-pencil"></i> Update</button>
+                <button type="submit" name="update" class="btn btn-sm btn-primary btn-flat"><i class="fa fa-pencil"></i> Update</button>
               </div>
             </form>
+            <?php } ?>
+            <?php } ?>
           </div>
+          <?php 
+            if(isset($updateSetting)){
+              echo $updateSetting;
+            }
+          ?>
           <!-- /.box -->
         </div>
 
