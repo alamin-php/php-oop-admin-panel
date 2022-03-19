@@ -111,9 +111,14 @@
                       <i class="fa fa-user"></i> <span>Profile</span>
                   </a>
               </li>
-              <li>
-                  <a href="#">
+              <li class="<?php if($fm->activeLink() == 'setting' ){echo 'active';} ?>">
+                  <a href="setting.php">
                       <i class="fa fa-wrench"></i> <span>Setting</span>
+                  </a>
+              </li>
+              <li class="<?php if($fm->activeLink() == 'changepass' ){echo 'active';} ?>">
+                  <a href="changepass.php">
+                      <i class="fa fa-key"></i> <span>Change password</span>
                   </a>
               </li>
               <li>

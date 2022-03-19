@@ -144,6 +144,32 @@ include_once ($filepath."/../helpers/Format.php");
             }
         }
 
+        public function updatePassword($data, $id){
+            $old_pass       = mysqli_real_escape_string($this->db->link, $this->fm->validation(md5($data['old_pass'])));
+            $new_pass       = mysqli_real_escape_string($this->db->link, $this->fm->validation($data['password']));
+            $encptyPass     = md5($new_pass);
+            $id             = mysqli_real_escape_string($this->db->link, $id);
+            $chkPass        = $this->checkPassword($id, $old_pass);
+
+            if(empty($old_pass) || empty($new_pass)){
+                $this->msg = "<span class='error'>Field must not be empty</span>";
+                return $this->msg;
+            }elseif($chkPass == false){
+                $this->msg = "<span class='error'>Old password not metch !</span>";
+                return $this->msg;
+            }elseif(strlen($new_pass) < 4){
+                $this->msg = "<span class='error'>Password must be geter then 4 digit</span>";
+                return $this->msg;
+            }else{
+                $query = "UPDATE tbl_user SET password='$encptyPass' WHERE id='$id'";
+                $update_password = $this->db->insert($query);
+                if($update_password){
+                    $this->msg = "<span class='success'>Password updated successfully!</span>";
+                    return $this->msg;
+                }
+            }
+        }
+
         public function readAllUser(){
             $query = "SELECT * FROM tbl_user WHERE role = '1' || role = '2' || role = '3' ORDER BY name ASC";
                 $result = $this->db->select($query);
@@ -243,5 +269,14 @@ include_once ($filepath."/../helpers/Format.php");
                 }else{
                     return 0;
                 }
+        }
+        public function checkPassword($id, $password){
+            $query = "SELECT password FROM tbl_user WHERE password = '$password' AND id = '$id'";
+            $result = $this->db->select($query);
+            if($result){
+                return true;
+            }else{
+                return false;
+            }
         }
     }

@@ -77,6 +77,7 @@
                         <div class="box-footer">
                             <button type="submit" name="update" class="btn btn-sm btn-primary btn-flat"><i
                                     class="fa fa-edit"></i> Update</button>
+                            <a href="changepass.php" class="btn btn-sm btn-primary btn-flat pull-right">Change password</a>
                         </div>
                     </form>
                     <?php } ?>
