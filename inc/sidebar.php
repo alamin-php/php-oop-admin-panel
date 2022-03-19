@@ -100,20 +100,9 @@
                       <i class="fa fa- fa-cube"></i> <span>Products</span>
                   </a>
               </li>
-              <li class="<?php if($fm->activeLink() == 'companyadd' ){echo 'active';} ?>">
-                  <a href="companyadd.php">
-                      <i class="fa fa-files-o"></i> <span>Company</span>
-
-                  </a>
-              </li>
               <li class="<?php if($fm->activeLink() == 'profile' ){echo 'active';} ?>">
                   <a href="profile.php">
                       <i class="fa fa-user"></i> <span>Profile</span>
-                  </a>
-              </li>
-              <li class="<?php if($fm->activeLink() == 'setting' ){echo 'active';} ?>">
-                  <a href="setting.php">
-                      <i class="fa fa-wrench"></i> <span>Setting</span>
                   </a>
               </li>
               <li class="<?php if($fm->activeLink() == 'changepass' ){echo 'active';} ?>">
@@ -121,6 +110,19 @@
                       <i class="fa fa-key"></i> <span>Change password</span>
                   </a>
               </li>
+              <?php if($userRole == '0') : ?>
+              <li class="<?php if($fm->activeLink() == 'setting' ){echo 'active';} ?>">
+                  <a href="setting.php">
+                      <i class="fa fa-wrench"></i> <span>Setting</span>
+                  </a>
+              </li>
+              <li class="<?php if($fm->activeLink() == 'companyadd' ){echo 'active';} ?>">
+                  <a href="companyadd.php">
+                      <i class="fa fa-files-o"></i> <span>Company</span>
+
+                  </a>
+              </li>
+              <?php endif; ?>
               <li>
                   <a onclick="return confirm('Are you sure to LOGOUT?')" href="?action=logout">
                       <i class="fa fa-sign-out"></i> <span>Logout</span>

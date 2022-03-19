@@ -58,7 +58,7 @@
 
             <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
-
+            <?php if($userRole == 0) : ?>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="ion ion-ios-people-outline"></i></span>
@@ -84,6 +84,7 @@
                 </div>
                 <!-- /.info-box -->
             </div>
+            <?php endif; ?>
             <!-- /.col -->
         </div>
         <!-- /.row -->

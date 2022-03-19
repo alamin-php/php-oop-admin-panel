@@ -5,6 +5,7 @@
     include_once ($filepath."/classes/User.php");
 ?>
 <?php
+error_reporting(0);
   $id = Session::get('userId');
 	$user = new User();
 	if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["update"])){

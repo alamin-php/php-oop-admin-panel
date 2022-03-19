@@ -35,7 +35,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Update password</h3>
-                        <a href="userlist.php" class="btn btn-sm btn-default btn-flat pull-right"><i class="fa fa-undo"></i> Back</a>
+                        <a href="profile.php" class="btn btn-sm btn-default btn-flat pull-right"><i class="fa fa-undo"></i> Back</a>
                     </div>
 
                     <!-- /.box-header -->

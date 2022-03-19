@@ -1,5 +1,13 @@
 <?php include("inc/header.php"); ?>
 <?php include("inc/sidebar.php"); ?>
+<?php if($userRole != '0'){
+  echo "<script>window.location='404.php'</script>";
+} 
+?>
+<?php 
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath."/classes/User.php");
+?>
 
 
 <!-- Content Wrapper. Contains page content -->
