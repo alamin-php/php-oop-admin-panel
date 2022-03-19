@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2022 at 04:35 PM
+-- Generation Time: Mar 19, 2022 at 04:55 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.27
 
@@ -24,15 +24,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_settings`
+--
+
+CREATE TABLE `tbl_settings` (
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `address` text COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `website` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_settings`
+--
+
+INSERT INTO `tbl_settings` (`id`, `name`, `address`, `phone`, `email`, `website`) VALUES
+(1, 'Nassa Group ltd', '238, Tejgaon Industrial Area,Gulshan Link, Road, Dhaka-1208, Bangladesh', '88 02 8878543-49', 'nassa@nassagroup.org', 'http://www.nassagroup.org');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
   `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `details` varchar(355) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `role` tinyint NOT NULL DEFAULT '3',
@@ -47,7 +69,7 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`id`, `name`, `username`, `email`, `password`, `details`, `image`, `role`, `status`, `created_at`) VALUES
 (6, 'Al Amin Sarker', 'admin', 'alamin.php100@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here.', 'upload/5731823e3e.png', 0, 0, '2022-03-12 15:40:23'),
 (14, 'Asfiyah Jannat Orin', 'orin', NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 1, 0, '2022-03-12 16:08:11'),
-(15, 'Mehedi Al Emran Tushar', 'mehedi', NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 2, 0, '2022-03-12 16:08:22'),
+(15, 'Mehedi Al Emran Tushar', 'mehedi', 'mehedi@gail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using', 'upload/ec8769f8e5.png', 2, 1, '2022-03-12 16:08:22'),
 (16, 'Imam Hassan', 'imam', NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 3, 0, '2022-03-12 16:08:34'),
 (17, 'Polash Miah', 'polash', NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 1, 0, '2022-03-12 16:08:48'),
 (18, 'Tuha Chowdhoury', 'tuha', NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 2, 0, '2022-03-12 16:09:19');
@@ -55,6 +77,12 @@ INSERT INTO `tbl_user` (`id`, `name`, `username`, `email`, `password`, `details`
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbl_settings`
+--
+ALTER TABLE `tbl_settings`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_user`
@@ -65,6 +93,12 @@ ALTER TABLE `tbl_user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_settings`
+--
+ALTER TABLE `tbl_settings`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
